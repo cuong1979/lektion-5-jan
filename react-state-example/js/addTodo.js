@@ -1,18 +1,20 @@
 import React from 'react';
 
-class AddTodo extends React.Component {
-    constructor(props) {
-        super(props);
-    }
+function AddTodo (props){
 
-    render() {
-        return (
+    const handleKeyUp = (event) =>{
+        if(event.key === 'Enter') {
+            props.updateState(event.target.value);
+        }
+    }
+   
+    return (
             <section>
-                <input type="text" placeholder="Skriv en todo" />
-                <button>{ this.props.buttonText }</button>
+                <input type="text" placeholder="Skriv en todo" onKeyUp={handleKeyUp} />
+                {/* <button>{ this.props.buttonText }</button> */}
             </section>
         )
     }
-}
+
 
 export default AddTodo;

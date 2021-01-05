@@ -11,6 +11,20 @@ class App extends Component {
     constructor(props) {
         super(props);
         console.log('this.props är: ', this.props);
+        this.state = {
+            todos:[
+                {todo:'Köpa kaffe'},
+                {todo:'Köpa kaka'},
+                {todo:'Brygga kaffe'},
+                {todo:'Fika'}
+            ],
+            latestTodo:''
+        }
+        this.uppdateLatestTodo = this.uppdateLatestTodo.bind(this);
+    }
+
+    uppdateLatestTodo(todo){
+        this.setState({latestTodo: todo});
     }
 
     render() {
@@ -18,12 +32,12 @@ class App extends Component {
             <section className="wrapper">
                 <h1>{ this.props.title }</h1>
                 <ul className="todo-list">
-                    <TodoItem text="Köp kaffe" done={false} />
-                    <TodoItem text="Köp kaka" done={true} />
-                    <TodoItem text="Brygg kaffe" done={false} />
-                    <TodoItem text="Fika" done={false} />
+                    <TodoItem text={this.state.todo[0]} done={false} />
+                    <TodoItem text={this.state.todo[1]} done={true} />
+                    <TodoItem text={this.state.todo[2]} done={false} />
+                    <TodoItem text={this.state.todo[3]} done={false} />
                 </ul>
-                <AddTodo buttonText="Lägg till" />
+                <AddTodo buttonText="Lägg till" uppdateState={this.uppdateLatestTodo} />
             </section>
         )
     }
