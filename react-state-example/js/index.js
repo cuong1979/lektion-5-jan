@@ -22,6 +22,14 @@ class App extends Component {
         }
         this.uppdateLatestTodo = this.uppdateLatestTodo.bind(this);
     }
+    addTodo(todo){
+        
+            //prevState hämtar ditt nuvarande state concat mergar din nuvarande todos array med din senaste todo och 
+            // returnerar en helt ny array som du uppdaterar ditt state med 
+            this.setState((prevState) => ({
+            todos: prevState.todos.concat(todo)
+        }))
+    }
 
     uppdateLatestTodo(todo){
         this.setState({latestTodo: todo});
@@ -37,7 +45,7 @@ class App extends Component {
                     <TodoItem text={this.state.todo[2]} done={false} />
                     <TodoItem text={this.state.todo[3]} done={false} />
                 </ul>
-                <AddTodo buttonText="Lägg till" uppdateState={this.uppdateLatestTodo} />
+                <AddTodo buttonText="Lägg till" uppdateState={this.addTodo} />
             </section>
         )
     }

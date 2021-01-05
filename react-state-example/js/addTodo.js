@@ -4,7 +4,7 @@ function AddTodo (props){
 
     const handleKeyUp = (event) =>{
         if(event.key === 'Enter') {
-            props.updateState(event.target.value);
+            props.updateState(todo: event.target.value);
         }
     }
    
